@@ -6,27 +6,29 @@ import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient()
 
-export const getUserTodoListActions = async () => {
+export const geProductListActions = async () => {
     return await prisma.product.findMany({
         orderBy: {
             createdAt: 'desc'
         },}
     )
 }
-export const createTodoActions = async ({title , body , price, image }:IProduct) => {
+export const createProductActions = async ({title , body , price, image, color , size }:IProduct) => {
     await prisma.product.create({
         data: {
             title,
             body,
             price,
-            image
+            image,
+            color,
+            size,
 
         }
     },)
     revalidatePath('/', 'layout')
 
 }
-export const updateTodoActions = async ({id ,title,body,price, image} : IProduct) => {
+export const updateProductActions = async ({id ,title,body,price, image, color , size} : IProduct) => {
     await prisma.product.update(
         {
             where: {
@@ -36,13 +38,15 @@ export const updateTodoActions = async ({id ,title,body,price, image} : IProduct
                 title,
                 body,
                 price,
-                image
+                image,
+                color,
+                size,
             }
         }
     )
     revalidatePath('/', 'layout')
 }
-export const deleteTodoActions = async ({id}:{id:string}) => {
+export const deleteProductActions = async ({id}:{id:string}) => {
     if (!id) {
         throw new Error('ID is required to delete a todo item')
     }
