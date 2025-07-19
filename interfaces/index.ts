@@ -1,8 +1,10 @@
 export interface IProduct {
     id?: string;
     title: string;
-    body: string;
+    body?: string | null;
     price: number;
     image: string;
-    createdAt?: Date;
+    color: string;
+    size: string;
+    createdAt?: Date |null;
 }
