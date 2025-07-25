@@ -1,8 +1,7 @@
 import React from 'react'
-import TableProducts from '../components/TableProducts'
+import TableProducts from '../../components/Admin/TableProducts'
 import { geProductListActions } from '@/actions/product.actions'
-import { IProduct } from '@/interfaces'
-import { AddProductForm } from '../components/AddProductForm'
+import { AddProductForm } from '../../components/Admin/AddProductForm'
 
 export default async function page() {
 
