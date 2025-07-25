@@ -28,6 +28,16 @@ export const createProductActions = async ({title , body , price, image, color ,
     revalidatePath('/', 'layout')
 
 }
+export const getProductIdActions = async ({id}: {id:string}) => {
+    if (!id) {
+        throw new Error('ID is required to get a product')
+    }
+    return await prisma.product.findUnique({
+        where: {
+            id
+        }
+    })
+}
 export const updateProductActions = async ({id ,title,body,price, image, color , size} : IProduct) => {
     await prisma.product.update(
         {

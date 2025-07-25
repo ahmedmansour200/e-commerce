@@ -12,8 +12,8 @@ model product {
   title    String
   body     String?
   price    Float
-  color    String
-  size     String
-  image    String
+  color    String []
+  size     String []
+  image    String []
   createdAt DateTime? @default(now())
   }
